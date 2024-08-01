@@ -47,7 +47,7 @@ class StatsControllerTest {
             .build();
 
     @BeforeEach
-    void init() {
+    public void init() {
         mvc = MockMvcBuilders
                 .standaloneSetup(controller)
                 .build();
@@ -61,7 +61,7 @@ class StatsControllerTest {
     }
 
     @Test
-    void addHit_whenValidDto_thenCreated() throws Exception {
+    public void addHit_whenValidDto_thenCreated() throws Exception {
         mvc.perform(post("/hit")
                         .content(mapper.writeValueAsString(dto))
                         .characterEncoding(StandardCharsets.UTF_8)
@@ -73,7 +73,7 @@ class StatsControllerTest {
     }
 
     @Test
-    void addHit_whenEmptyApp_thenReturnBadRequest() throws Exception {
+    public void addHit_whenEmptyApp_thenReturnBadRequest() throws Exception {
         dto = EndpointHitDto.builder()
                 .app("")
                 .build();
@@ -89,7 +89,7 @@ class StatsControllerTest {
     }
 
     @Test
-    void addHit_whenInvalidApp_thenReturnBadRequest() throws Exception {
+    public void addHit_whenInvalidApp_thenReturnBadRequest() throws Exception {
         dto = EndpointHitDto.builder()
                 .app("soooooooooooooooooooooooooooooooooooooooooooooooooooooooo" +
                         "biiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii" +
@@ -107,7 +107,7 @@ class StatsControllerTest {
     }
 
     @Test
-    void addHit_whenEmptyUri_thenReturnBadRequest() throws Exception {
+    public void addHit_whenEmptyUri_thenReturnBadRequest() throws Exception {
         dto = EndpointHitDto.builder()
                 .uri("")
                 .build();
@@ -123,7 +123,7 @@ class StatsControllerTest {
     }
 
     @Test
-    void addHit_whenInvalidUri_thenReturnBadRequest() throws Exception {
+    public void addHit_whenInvalidUri_thenReturnBadRequest() throws Exception {
         dto = EndpointHitDto.builder()
                 .uri("soooooooooooooooooooooooooooooooooooooooooooooooooooooooo" +
                         "biiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii" +
@@ -141,7 +141,7 @@ class StatsControllerTest {
     }
 
     @Test
-    void addHit_whenEmptyIp_thenReturnBadRequest() throws Exception {
+    public void addHit_whenEmptyIp_thenReturnBadRequest() throws Exception {
         dto = EndpointHitDto.builder()
                 .ip("")
                 .build();
@@ -157,7 +157,7 @@ class StatsControllerTest {
     }
 
     @Test
-    void addHit_whenInvalidIp_thenReturnBadRequest() throws Exception {
+    public void addHit_whenInvalidIp_thenReturnBadRequest() throws Exception {
         dto = EndpointHitDto.builder()
                 .app("wrong.ip")
                 .build();
@@ -173,7 +173,7 @@ class StatsControllerTest {
     }
 
     @Test
-    void addHit_whenEmptyTimestamp_thenReturnBadRequest() throws Exception {
+    public void addHit_whenEmptyTimestamp_thenReturnBadRequest() throws Exception {
         dto = EndpointHitDto.builder()
                 .timestamp(null)
                 .build();
@@ -189,7 +189,7 @@ class StatsControllerTest {
     }
 
     @Test
-    void getStats_whenValidParam_returnList() throws Exception {
+    public void getStats_whenValidParam_returnList() throws Exception {
         String start = "2020-05-05 00:00:00";
         String end = "2035-05-05 00:00:00";
 
@@ -222,7 +222,7 @@ class StatsControllerTest {
     }
 
     @Test
-    void getStats_whenStartIsNotExist_returnBadRequest() throws Exception {
+    public void getStats_whenStartIsNotExist_returnBadRequest() throws Exception {
         String end = "2025-05-05 00:00:00";
 
         mvc.perform(get("/stats")
@@ -237,7 +237,7 @@ class StatsControllerTest {
     }
 
     @Test
-    void getStats_whenEndIsNotExist_returnBadRequest() throws Exception {
+    public void getStats_whenEndIsNotExist_returnBadRequest() throws Exception {
         String start = "2025-05-05 00:00:00";
 
         mvc.perform(get("/stats")
@@ -252,7 +252,7 @@ class StatsControllerTest {
     }
 
     @Test
-    void getStats_whenInvalidDataForm_returnBadRequest() throws Exception {
+    public void getStats_whenInvalidDataForm_returnBadRequest() throws Exception {
         String start = "2035.05.05 00:00:00";
         String end = "2025-05-05 00:00:00";
 

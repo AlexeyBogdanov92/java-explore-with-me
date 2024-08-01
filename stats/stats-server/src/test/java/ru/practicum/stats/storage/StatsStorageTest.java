@@ -16,10 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 class StatsStorageTest {
     @Autowired
-    StatsStorage storage;
+    private StatsStorage storage;
 
     @BeforeEach
-    void init() {
+    public void init() {
         EndpointHit entity1 = EndpointHit.builder()
                 .app("ewm-main-service")
                 .uri("/events/2")
@@ -39,12 +39,12 @@ class StatsStorageTest {
     }
 
     @AfterEach
-    void clear() {
+    public void clear() {
         storage.deleteAll();
     }
 
     @Test
-    void getUniqueByTimes_whenValidParam_thenReturnList() {
+    public void getUniqueByTimes_whenValidParam_thenReturnList() {
         List<ViewStatsDto> actualList = storage.getUniqueByTimes(
                 LocalDateTime.of(2022, 1, 6, 11, 0, 23),
                 LocalDateTime.of(2022, 12, 6, 11, 0, 23));
@@ -61,7 +61,7 @@ class StatsStorageTest {
     }
 
     @Test
-    void getUniqueByTimesAndList_whenValidParam_thenReturnList() {
+    public void getUniqueByTimesAndList_whenValidParam_thenReturnList() {
         List<ViewStatsDto> actualList = storage.getUniqueByTimesAndList(
                 List.of("/events/1"),
                 LocalDateTime.of(2022, 1, 6, 11, 0, 23),
@@ -74,7 +74,7 @@ class StatsStorageTest {
     }
 
     @Test
-    void getAllByTimes_whenValidParam_thenReturnList() {
+    public void getAllByTimes_whenValidParam_thenReturnList() {
         List<ViewStatsDto> actualList = storage.getAllByTime(
                 LocalDateTime.of(2022, 1, 6, 11, 0, 23),
                 LocalDateTime.of(2022, 12, 6, 11, 0, 23));
@@ -91,7 +91,7 @@ class StatsStorageTest {
     }
 
     @Test
-    void getAllByTimeAndList_whenValidParam_thenReturnList() {
+    public void getAllByTimeAndList_whenValidParam_thenReturnList() {
         List<ViewStatsDto> actualList = storage.getAllByTimeAndList(
                 List.of("/events/1"),
                 LocalDateTime.of(2022, 1, 6, 11, 0, 23),
@@ -104,7 +104,7 @@ class StatsStorageTest {
     }
 
     @Test
-    void getUniqueByTimes_whenNotFoundByTimes_thenReturnEmptyList() {
+    public void getUniqueByTimes_whenNotFoundByTimes_thenReturnEmptyList() {
         List<ViewStatsDto> actualList = storage.getUniqueByTimes(
                 LocalDateTime.of(2023, 1, 6, 11, 0, 23),
                 LocalDateTime.of(2023, 12, 6, 11, 0, 23));
@@ -113,7 +113,7 @@ class StatsStorageTest {
     }
 
     @Test
-    void getUniqueByTimesAndList_whenNotFoundByTimes_thenReturnEmptyList() {
+    public void getUniqueByTimesAndList_whenNotFoundByTimes_thenReturnEmptyList() {
         List<ViewStatsDto> actualList = storage.getUniqueByTimesAndList(
                 List.of("/events/1"),
                 LocalDateTime.of(2023, 1, 6, 11, 0, 23),
@@ -123,7 +123,7 @@ class StatsStorageTest {
     }
 
     @Test
-    void getAllByTimes_whenNotFoundByTimes_thenReturnEmptyList() {
+    public void getAllByTimes_whenNotFoundByTimes_thenReturnEmptyList() {
         List<ViewStatsDto> actualList = storage.getAllByTime(
                 LocalDateTime.of(2023, 1, 6, 11, 0, 23),
                 LocalDateTime.of(2023, 12, 6, 11, 0, 23));
@@ -132,7 +132,7 @@ class StatsStorageTest {
     }
 
     @Test
-    void getAllByTimeAndList_whenNotFoundByTimes_thenReturnEmptyList() {
+    public void getAllByTimeAndList_whenNotFoundByTimes_thenReturnEmptyList() {
         List<ViewStatsDto> actualList = storage.getAllByTimeAndList(
                 List.of("/events/1"),
                 LocalDateTime.of(2023, 1, 6, 11, 0, 23),
@@ -142,7 +142,7 @@ class StatsStorageTest {
     }
 
     @Test
-    void getUniqueByTimesAndList_whenNotFoundByUri_thenReturnEmptyList() {
+    public void getUniqueByTimesAndList_whenNotFoundByUri_thenReturnEmptyList() {
         List<ViewStatsDto> actualList = storage.getUniqueByTimesAndList(
                 List.of("/events/33"),
                 LocalDateTime.of(2022, 1, 6, 11, 0, 23),
@@ -152,7 +152,7 @@ class StatsStorageTest {
     }
 
     @Test
-    void getAllByTimeAndList_whenNotFoundByUri_thenReturnEmptyList() {
+    public void getAllByTimeAndList_whenNotFoundByUri_thenReturnEmptyList() {
         List<ViewStatsDto> actualList = storage.getAllByTimeAndList(
                 List.of("/events/33"),
                 LocalDateTime.of(2022, 1, 6, 11, 0, 23),
