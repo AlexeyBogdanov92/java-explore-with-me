@@ -1,6 +1,7 @@
 package ru.practicum.stats.storage;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 class StatsStorageTest {
+    private final StatsStorage storage;
+
     @Autowired
-    private StatsStorage storage;
+    public StatsStorageTest(StatsStorage storage) {
+        this.storage = storage;
+    }
 
     @BeforeEach
     public void init() {

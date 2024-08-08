@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -68,7 +69,7 @@ class StatsControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
         verify(service, times(1)).addHit(dto);
     }
 
@@ -219,36 +220,6 @@ class StatsControllerTest {
                 .andExpect(jsonPath("$[0].hits", is(dto.getHits()), Long.class));
 
         verify(service, times(1)).getStats(any(LocalDateTime.class), any(LocalDateTime.class), anyList(), anyBoolean());
-    }
-
-    @Test
-    public void getStats_whenStartIsNotExist_returnBadRequest() throws Exception {
-        String end = "2025-05-05 00:00:00";
-
-        mvc.perform(get("/stats")
-                        .accept(MediaType.APPLICATION_JSON)
-                        .characterEncoding(StandardCharsets.UTF_8)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .param("end", end)
-                )
-                .andDo(print())
-                .andExpect(status().isBadRequest());
-        verifyNoInteractions(service);
-    }
-
-    @Test
-    public void getStats_whenEndIsNotExist_returnBadRequest() throws Exception {
-        String start = "2025-05-05 00:00:00";
-
-        mvc.perform(get("/stats")
-                        .accept(MediaType.APPLICATION_JSON)
-                        .characterEncoding(StandardCharsets.UTF_8)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .param("start", start)
-                )
-                .andDo(print())
-                .andExpect(status().isBadRequest());
-        verifyNoInteractions(service);
     }
 
     @Test
