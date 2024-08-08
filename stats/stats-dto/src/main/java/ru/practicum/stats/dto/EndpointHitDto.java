@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import ru.practicum.stats.dto.annotation.CheckIpAddress;
 
-
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -29,4 +28,4 @@ public class EndpointHitDto {
     @NotNull(message = "Дата и время не может быть пустым")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timestamp;
-    }
+}
