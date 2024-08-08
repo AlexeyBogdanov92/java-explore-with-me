@@ -1,12 +1,14 @@
 package ru.practicum.dto.user;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
 
 @Data
 @NoArgsConstructor
-@SuperBuilder
+@AllArgsConstructor
+@Builder
 public class UserShortDto {
     private Long id;
     private String name;

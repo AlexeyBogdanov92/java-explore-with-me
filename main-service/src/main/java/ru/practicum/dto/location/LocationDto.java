@@ -1,12 +1,14 @@
 package ru.practicum.dto.location;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
 
 @Data
 @NoArgsConstructor
-@SuperBuilder
+@AllArgsConstructor
+@Builder
 public class LocationDto {
     private float lat;
     private float lon;

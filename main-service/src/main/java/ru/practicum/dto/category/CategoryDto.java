@@ -1,12 +1,15 @@
 package ru.practicum.dto.category;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.Builder;
+
 
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
+@Builder
 public class CategoryDto {
     private Long id;
     private String name;

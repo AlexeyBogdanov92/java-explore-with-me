@@ -1,15 +1,17 @@
 package ru.practicum.dto.compilation;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Data
 @NoArgsConstructor
-@SuperBuilder
+@AllArgsConstructor
+@Builder
 public class UpdateCompilationRequest {
     private Set<Long> events = null;
 

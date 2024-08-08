@@ -1,9 +1,10 @@
 package ru.practicum.dto.event;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 import ru.practicum.dto.location.LocationDto;
 import ru.practicum.enums.StateAction;
 import ru.practicum.utility.Constant;
@@ -15,7 +16,8 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-@SuperBuilder
+@AllArgsConstructor
+@Builder
 public class UpdateEventUserRequest {
     @Size(min = 20, max = 2000)
     private String annotation;

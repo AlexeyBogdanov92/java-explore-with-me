@@ -49,6 +49,7 @@ public class EventService {
     private final EventStorage eventStorage;
     private final RequestStorage requestStorage;
     private final StatsClient statsClient;
+    private static final Integer FIRST_VALUE = 0;
 
     @Transactional(readOnly = true)
     public List<EventFullDto> getEventsByParam(List<Long> users, List<String> states, List<Long> categories,
@@ -69,7 +70,7 @@ public class EventService {
         Map<Long, Integer> views = getViews(foundEvents);
 
         return foundEvents.stream()
-                .map(e -> Mapper.toEventFullDto(e, views.getOrDefault(e.getId(), 0)))
+                .map(e -> Mapper.toEventFullDto(e, views.getOrDefault(e.getId(), FIRST_VALUE)))
                 .collect(Collectors.toList());
     }
 
@@ -97,7 +98,7 @@ public class EventService {
         Map<Long, Integer> views = getViews(foundEvents);
 
         return foundEvents.stream()
-                .map(e -> Mapper.toEventShortDto(e, views.getOrDefault(e.getId(), 0)))
+                .map(e -> Mapper.toEventShortDto(e, views.getOrDefault(e.getId(), FIRST_VALUE)))
                 .collect(Collectors.toList());
     }
 
@@ -134,7 +135,7 @@ public class EventService {
 
         Map<Long, Integer> views = getViews(List.of(newEvent));
 
-        return Mapper.toEventFullDto(newEvent, views.getOrDefault(newEvent.getId(), 0));
+        return Mapper.toEventFullDto(newEvent, views.getOrDefault(newEvent.getId(), FIRST_VALUE));
     }
 
     @Transactional(readOnly = true)
@@ -148,7 +149,7 @@ public class EventService {
 
         Map<Long, Integer> views = getViews(List.of(event));
 
-        return Mapper.toEventFullDto(event, views.getOrDefault(event.getId(), 0));
+        return Mapper.toEventFullDto(event, views.getOrDefault(event.getId(), FIRST_VALUE));
     }
 
     @Transactional(readOnly = true)
@@ -159,7 +160,7 @@ public class EventService {
         Map<Long, Integer> views = getViews(eventsList);
 
         return eventsList.stream()
-                .map(e -> Mapper.toEventShortDto(e, views.getOrDefault(e.getId(), 0)))
+                .map(e -> Mapper.toEventShortDto(e, views.getOrDefault(e.getId(), FIRST_VALUE)))
                 .collect(Collectors.toList());
     }
 
@@ -170,7 +171,7 @@ public class EventService {
 
         Map<Long, Integer> views = getViews(List.of(foundEvent));
 
-        return Mapper.toEventFullDto(foundEvent, views.getOrDefault(foundEvent.getId(), 0));
+        return Mapper.toEventFullDto(foundEvent, views.getOrDefault(foundEvent.getId(), FIRST_VALUE));
     }
 
     @Transactional(readOnly = true)
@@ -224,7 +225,7 @@ public class EventService {
 
         Map<Long, Integer> views = getViews(List.of(newEvent));
 
-        return Mapper.toEventFullDto(newEvent, views.getOrDefault(newEvent.getId(), 0));
+        return Mapper.toEventFullDto(newEvent, views.getOrDefault(newEvent.getId(), FIRST_VALUE));
     }
 
     @Transactional
