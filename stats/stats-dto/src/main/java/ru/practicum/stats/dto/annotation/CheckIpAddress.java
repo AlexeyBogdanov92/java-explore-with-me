@@ -1,6 +1,6 @@
 package ru.practicum.stats.dto.annotation;
 
-import javax.validation.Payload;
+import jakarta.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented // аннотация должна быть добавлена в javadoc поля/метода

@@ -9,9 +9,9 @@ import ru.practicum.dto.location.LocationDto;
 import ru.practicum.enums.UpdateStateAction;
 import ru.practicum.utility.Constant;
 
-import javax.validation.constraints.Future;
-import javax.validation.constraints.PositiveOrZero;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Data

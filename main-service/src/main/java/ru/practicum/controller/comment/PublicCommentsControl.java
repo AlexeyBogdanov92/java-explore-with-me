@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.practicum.dto.comment.CommentDtoResponse;
 import ru.practicum.service.CommentService;
 
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import java.util.List;
 
 @RestController

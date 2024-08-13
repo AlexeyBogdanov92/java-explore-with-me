@@ -8,7 +8,7 @@ import lombok.Builder;
 import ru.practicum.dto.location.LocationDto;
 import ru.practicum.utility.Constant;
 
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
 
 @Data

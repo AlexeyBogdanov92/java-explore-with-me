@@ -9,7 +9,7 @@ import ru.practicum.dto.compilation.NewCompilationDto;
 import ru.practicum.dto.compilation.UpdateCompilationRequest;
 import ru.practicum.service.CompilationService;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 @RestController
 @Slf4j

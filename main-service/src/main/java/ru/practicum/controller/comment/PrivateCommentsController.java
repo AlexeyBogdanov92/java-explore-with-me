@@ -8,7 +8,7 @@ import ru.practicum.dto.comment.CommentDtoResponse;
 import ru.practicum.dto.comment.NewCommentDto;
 import ru.practicum.service.CommentService;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 @RestController
 @Slf4j
