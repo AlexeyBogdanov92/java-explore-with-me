@@ -9,6 +9,7 @@ import ru.practicum.dto.location.LocationDto;
 import ru.practicum.utility.Constant;
 
 import jakarta.validation.constraints.*;
+
 import java.time.LocalDateTime;
 
 @Data
@@ -34,12 +35,12 @@ public class NewEventDto {
 
     @NotNull
     private LocationDto location;
-
+    @Builder.Default
     private Boolean paid = false;
-
+    @Builder.Default
     @PositiveOrZero
     private Integer participantLimit = 0;
-
+    @Builder.Default
     private Boolean requestModeration = true;
 
     @NotBlank
