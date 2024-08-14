@@ -80,13 +80,13 @@ class StatsStorageTest {
 
         assertEquals(2, actualList.size());
 
-        assertEquals("ewm-main-service", actualList.get(1).getApp());
-        assertEquals("/events/1", actualList.get(1).getUri());
-        assertEquals(1, actualList.get(1).getHits());
-
         assertEquals("ewm-main-service", actualList.get(0).getApp());
-        assertEquals("/events/2", actualList.get(0).getUri());
+        assertEquals("/events/1", actualList.get(0).getUri());
         assertEquals(1, actualList.get(0).getHits());
+
+        assertEquals("ewm-main-service", actualList.get(1).getApp());
+        assertEquals("/events/2", actualList.get(1).getUri());
+        assertEquals(1, actualList.get(1).getHits());
     }
 
     @Test
