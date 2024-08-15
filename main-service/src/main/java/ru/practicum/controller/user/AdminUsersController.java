@@ -8,9 +8,9 @@ import ru.practicum.dto.user.NewUserRequest;
 import ru.practicum.dto.user.UserDto;
 import ru.practicum.service.UserService;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import java.util.List;
 
 @RestController
@@ -21,7 +21,7 @@ public class AdminUsersController {
     private final UserService service;
 
     @GetMapping
-    List<UserDto> getUsersByParam(@RequestParam(required = false) List<Long> ids,
+    public List<UserDto> getUsersByParam(@RequestParam(required = false) List<Long> ids,
                                          @RequestParam(defaultValue = "0") @PositiveOrZero int from,
                                          @RequestParam(defaultValue = "10") @Positive int size) {
         log.info("Получение списка пользователей: id - {}, количество пропущенных - {}, элементов в наборе - {}",
@@ -31,14 +31,14 @@ public class AdminUsersController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    UserDto createUser(@RequestBody @Valid NewUserRequest creatingDto) {
+    public UserDto createUser(@RequestBody @Valid NewUserRequest creatingDto) {
         log.info("Создание нового пользователя: {}", creatingDto);
         return service.createUser(creatingDto);
     }
 
     @DeleteMapping("/{userId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void deleteUser(@PathVariable long userId) {
+    public void deleteUser(@PathVariable long userId) {
         log.info("Удаление пользователя с id: {}", userId);
         service.deleteUser(userId);
     }

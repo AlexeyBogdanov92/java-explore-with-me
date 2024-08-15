@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.practicum.dto.compilation.CompilationsDto;
 import ru.practicum.service.CompilationService;
 
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import java.util.List;
 
 @RestController
@@ -18,7 +18,7 @@ public class PublicCompilationsController {
     private final CompilationService service;
 
     @GetMapping
-    List<CompilationsDto> getCompilations(@RequestParam(required = false) Boolean pinned,
+    public List<CompilationsDto> getCompilations(@RequestParam(required = false) Boolean pinned,
                                           @RequestParam(defaultValue = "0") @PositiveOrZero int from,
                                           @RequestParam(defaultValue = "10") @Positive int size) {
         log.info("Получение подборки событий: закрепленные - {}, количество пропущенных - {}, элементов в наборе - {}",
@@ -27,7 +27,7 @@ public class PublicCompilationsController {
     }
 
     @GetMapping("/{compId}")
-    CompilationsDto getCompilationById(@PathVariable long compId) {
+    public CompilationsDto getCompilationById(@PathVariable long compId) {
         log.info("Получение подборки событий по id = {}", compId);
         return service.getCompilationById(compId);
     }

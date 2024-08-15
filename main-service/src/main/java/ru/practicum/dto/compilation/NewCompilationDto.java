@@ -5,8 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,8 +15,9 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 public class NewCompilationDto {
+    @Builder.Default
     private Set<Long> events = new HashSet<>();
-
+    @Builder.Default
     private Boolean pinned = false;
 
     @NotBlank

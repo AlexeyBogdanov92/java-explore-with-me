@@ -8,7 +8,7 @@ import ru.practicum.dto.category.CategoryDto;
 import ru.practicum.dto.category.NewCategoryDto;
 import ru.practicum.service.CategoryService;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 @RestController
 @Slf4j
@@ -19,7 +19,7 @@ public class AdminCategoriesController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    CategoryDto createCategory(@RequestBody @Valid NewCategoryDto creatingDto) {
+    public CategoryDto createCategory(@RequestBody @Valid NewCategoryDto creatingDto) {
         log.info("Создание новой категории: {}", creatingDto);
         return service.createCategory(creatingDto);
     }

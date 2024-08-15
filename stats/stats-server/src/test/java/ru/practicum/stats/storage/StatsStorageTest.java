@@ -1,26 +1,26 @@
 package ru.practicum.stats.storage;
 
-import org.junit.jupiter.api.AfterEach;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.stats.dto.ViewStatsDto;
 import ru.practicum.stats.entity.EndpointHit;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@RequiredArgsConstructor(onConstructor_ = @Autowired)
+@Transactional
 class StatsStorageTest {
     private final StatsStorage storage;
-
-    @Autowired
-    public StatsStorageTest(StatsStorage storage) {
-        this.storage = storage;
-    }
 
     @BeforeEach
     public void init() {
@@ -40,11 +40,6 @@ class StatsStorageTest {
 
         storage.save(entity1);
         storage.save(entity2);
-    }
-
-    @AfterEach
-    public void clear() {
-        storage.deleteAll();
     }
 
     @Test

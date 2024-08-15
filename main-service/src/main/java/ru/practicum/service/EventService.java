@@ -2,6 +2,7 @@ package ru.practicum.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
@@ -34,7 +35,7 @@ import ru.practicum.stats.dto.ViewStatsDto;
 import ru.practicum.storage.CategoryStorage;
 import ru.practicum.storage.RequestStorage;
 
-import javax.servlet.http.HttpServletRequest;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
